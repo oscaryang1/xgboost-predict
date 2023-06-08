@@ -17,7 +17,7 @@ xgb_model = xgb.XGBRegressor(max_depth=10,
 xgb_model.load_model('model.json')
 
 
-data_train = pd.read_csv(r"junyi.csv")
+data_train = pd.read_csv(r"data.csv")
 
 
 
