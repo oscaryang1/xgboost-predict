@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 import xgboost as xgb
 
 
-data_train = pd.read_csv(r"junyi.csv")
+data_train = pd.read_csv(r"data.csv")
 
 
 cols = ['bmi','sex','edu','race','diabetes','smoke','cholesterol_mg','vitamin_K_mcg','caffeine_mg','high','low']
