@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,47 +6,70 @@
     <title>XGboost Model</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css' ) }}">
 
+
 </head>
 <body>
 
-    <label style=" position: absolute; top: 10px; left: 50px; font-size: 15px">Model prediction</label>
+   <label style=" position: absolute; top: 10px; left: 50px; font-size: 15px">Model prediction</label>
     <label style=" position: absolute; top: 450px; left: 0px; font-size: 15px">Data</label>
     <label style=" position: absolute; top: 470px; left: 0px; font-size: 20px">Prediction Data</label>
 
 
     <form method="post" action="resuslt2">
         <label>
-            <span style=" position: absolute; top: 80px; left: 700px; font-size: 15px">bmi</span>
+            <span style=" position: absolute; top: 80px; left: 700px; font-size: 15px">BMI</span>
             <input style=" position: absolute; top: 105px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
                    name="data1" value={{data1}} step=0.01 />
         </label>
 
         <label>
             <span style=" position: absolute; top: 150px; left: 700px; font-size: 15px">sex</span>
-            <input style=" position: absolute; top: 175px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
-                   name="data2" value={{data2}} step=1 />
+            <select style=" position: absolute; top: 175px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title"
+                    name="data2" step=1 >
+                <option value="1">male</option>
+                <option value="2">female</option>
+
+            </select>
         </label>
 
 
         <label>
-            <span style=" position: absolute; top: 220px; left: 700px; font-size: 15px">edu</span>
-            <input style=" position: absolute; top: 245px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title"
-                   type="number" name="data3" value={{data3}} step=1 />
+            <span style=" position: absolute; top: 220px; left: 700px; font-size: 15px">Educational level</span>
+            <select style=" position: absolute; top: 245px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title"
+                    name="data3"  step=1 >
+                <option value="1">&lt;high school</option>
+                <option value="2">high school</option>
+                <option value="3">&gt;high school</option>
+
+            </select>
         </label>
         <label>
             <span style=" position: absolute; top: 290px; left: 700px; font-size: 15px">race</span>
-            <input style=" position: absolute; top: 315px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
-                   name="data4" value={{data4}} step=1 />
+            <select style=" position: absolute; top: 315px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
+                   name="data4"  step=1 >
+                <option value="1">no-White</option>
+                <option value="2">White</option>
+
+            </select>
         </label>
         <label>
             <span style=" position: absolute; top: 360px; left: 700px; font-size: 15px">diabetes</span>
-            <input style=" position: absolute; top: 385px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
-                   name="data5" value={{data5}} step=1 />
+            <select style=" position: absolute; top: 385px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title"
+                    name="data5" value={{data5}} step=1 >
+                <option value="1">no</option>
+                <option value="2">yes</option>
+
+            </select>
         </label>
         <label>
             <span style=" position: absolute; top: 430px; left: 700px; font-size: 15px">smoke</span>
-            <input style=" position: absolute; top: 455px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
-                   name="data6" value={{data6}} step=1 />
+            <select style=" position: absolute; top: 455px; left: 700px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
+                    name="data6" value={{data6}} step=1 >
+                <option value="1">never</option>
+                <option value="2">former</option>
+                <option value="3">now</option>
+
+            </select>
         </label>
 
 
@@ -56,28 +79,28 @@
 
 
         <label>
-            <span style=" position: absolute; top: 80px; left: 1300px; font-size: 15px">cholesterol_mg</span>
+            <span style=" position: absolute; top: 80px; left: 1300px; font-size: 15px">cholesterol mg</span>
             <input style=" position: absolute; top: 105px; left: 1300px; font-size: 15px; width:300px; height: 27px;
        " id="title" type="number" name="data7" value={{data7}} step=0.1 />
         </label>
         <label>
-            <span style=" position: absolute; top: 150px; left: 1300px; font-size: 15px">vitamin_K_mcg</span>
+            <span style=" position: absolute; top: 150px; left: 1300px; font-size: 15px">vitamin K mcg</span>
             <input style=" position: absolute; top: 175px; left: 1300px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
                    name="data8" value={{data8}} step=0.01 />
         </label>
 
         <label>
-            <span style=" position: absolute; top: 220px; left: 1300px; font-size: 15px">caffeine_mg</span>
+            <span style=" position: absolute; top: 220px; left: 1300px; font-size: 15px">caffeine mg</span>
             <input style=" position: absolute; top: 245px; left: 1300px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
                    name="data9" value={{data9}} step=0.1 />
         </label>
         <label>
-            <span style=" position: absolute; top: 290px; left: 1300px; font-size: 15px">high</span>
+            <span style=" position: absolute; top: 290px; left: 1300px; font-size: 15px">high-carbohydrate</span>
             <input style=" position: absolute; top: 315px; left: 1300px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
                    name="data10" value={{data10}} step=0.001 />
         </label>
         <label>
-            <span style=" position: absolute; top: 360px; left: 1300px; font-size: 15px">low</span>
+            <span style=" position: absolute; top: 360px; left: 1300px; font-size: 15px">low-carbohydrate</span>
             <input style=" position: absolute; top: 385px; left: 1300px; font-size: 15px; width: 300px; height: 27px; " id="title" type="number"
                    name="data11" value={{data11}} step=0.001 />
         </label>
@@ -106,6 +129,7 @@
     {% else %}
 
     {% endif %}
+
 </body>
 
 </html>
