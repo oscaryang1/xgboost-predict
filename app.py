@@ -1,12 +1,13 @@
+import os
 
 from flask import Flask,request,render_template,redirect
 
 from os import environ
 
 from predict import predict
-
+print(os.path.dirname(os.path.abspath(__file__)))
 name_all=" "
-path=r"D:\xgboost_gui\FlaskWebProject1\\"
+path=os.path.dirname(os.path.abspath(__file__))+r"/FlaskWebProject1/"
 app = Flask(__name__,template_folder=path+'templates',static_folder=path+'static',static_url_path="")
 @app.route('/')
 def index():
@@ -31,7 +32,6 @@ def resuslt2():
     data10 =float( request.form.get('data10'))
     data11 = float(request.form.get('data11'))
     p=predict([[data1,data2,data3,data4,data5,data6,data7,data8,data9,data10,data11]])
-   # print(p,"fasfas")
     return   render_template('sub.html',data1=data1,data2=data2,data7=data7,data3=data3,data4=data4,data5=data5,data6=data6,
                              data8=data8,data9=data9,data10=data10,data11=data11,flag=1)
    
@@ -42,10 +42,7 @@ def resuslt():
   
     return render_template('sub.html',predict=p[0],data1=data1,data2=data2,data7=data7,data3=data3,data4=data4,data5=data5,data6=data6,
                              data8=data8,data9=data9,data10=data10,data11=data11,)
-  
 
-
- 
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')
     try:
